@@ -6,12 +6,6 @@ var multer = require('multer');
 var upload = multer({ dest: '/tmp/' });
 var fs = require('fs');
 
-router.get('/', function(req,res, next) {
-  crearPdf(req.query.html, function (file){
-    res.sendFile(file);
-  });
-});
-
 router.post('/', upload.single('html') , function(req,res, next) {
   crearPdf(req.file, function (file){
     res.sendFile(file);
